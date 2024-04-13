@@ -5,7 +5,7 @@ const service = new GroupMemberService();
 export async function destory(req, res) {
   try {
     const result = await service.destory(req);
-    const status = result.status === "fail" ? 400 : 201;
+    const status = result.status === "fail" ? 400 : 204;
     res.status(status).send(result);
   } catch (error) {
     res.status(500).send({

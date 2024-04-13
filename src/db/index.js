@@ -1,21 +1,21 @@
 /* eslint-disable no-console */
 import { connect, connection } from 'mongoose';
+import { adminSeed, clearTestDB, userSeed } from '../../seed/user.seeder';
 
-class MongoDBConnection {
-  constructor() {
-    if (!MongoDBConnection.instance) {
-      connect(process.env.MONGODB_URI)
-        .then(() => console.log('MongoDB connected'))
-        .catch(err => console.error('MongoDB connection error:', err));
-      MongoDBConnection.instance = this;
-    }
-
-    return MongoDBConnection.instance;
-  }
-
-  getConnection() {
-    return connection;
-  }
+export async function connectDB() {
+  await connect(process.env.MONGODB_URI); //Connecting to the database
+  await adminSeed();
 }
 
-export default MongoDBConnection;
+export async function disconnectDB() {
+  if (process.env.NODE_ENV === 'test') {
+    await clearTestDB();
+  }
+  await connection.close(); // Closing the database connection
+}
+
+export async function testDB() {
+  await connect(process.env.MONGODB_URI);
+  await adminSeed();
+  await userSeed();
+}

@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import MongoDBConnection from './db';
+import { connectDB } from './db';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/user';
 import groupRoutes from './routes/group';
@@ -14,10 +14,11 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
-// Initialize the MongoDB connection
-const dbConnection = new MongoDBConnection();
-// Access the MongoDB connection
-dbConnection.getConnection();
+// if (process.env.NODE_ENV !== "test")
+connectDB().catch(err => {
+  // eslint-disable-next-line no-console
+  console.log(err.message);
+}); //Calling the connectDB function
 
 // Middleware
 app.use(cors());
@@ -53,7 +54,9 @@ app.use('/api/v1/', messageRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running on port ${PORT}`);
 });
+module.exports = {server};
+export default app;

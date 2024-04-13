@@ -19,13 +19,13 @@ export default class GroupService {
 
   async like(req) {
       const message = await Message.findById(req.params.id);
-      if (message) {
+      if (!message) {
         return {
           status: "fail",
           message: "Message Not Found",
         };
       }
-      let likedBy = message.liked_by;
+      const likedBy = message.liked_by;
       if (likedBy.includes(req.auth_user._id)) {
         return {
           status: "fail",

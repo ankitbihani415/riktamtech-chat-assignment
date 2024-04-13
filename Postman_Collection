@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "aa71a3d2-1632-455a-886b-ab46c588c957",
+		"name": "Riktamtech-Chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18741585"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenA}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":\"9174133782\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenA}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/update/661985cadb9102986c5f1559",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"661985cadb9102986c5f1559"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":9174133780,\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Group List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/group/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group View",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/group/show/66158e18ecef2e2b389e8933",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								"show",
+								"66158e18ecef2e2b389e8933"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"testingg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/group/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"testingg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/group/update/66158c72be1c43cee7cc1e12",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								"update",
+								"66158c72be1c43cee7cc1e12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/group/delete/66158c72be1c43cee7cc1e12",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								"delete",
+								"66158c72be1c43cee7cc1e12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group Member Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\":\"66158e18ecef2e2b389e8933\",\r\n    \"userId\":\"66158b9b8a5307a2d4b50669\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/group-member/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group-member",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group Member Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/group-member/delete/6615900a0acea2d80ae76786",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group-member",
+								"delete",
+								"6615900a0acea2d80ae76786"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Message Send",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenU}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\":\"thisistestmessage\",\r\n    \"groupId\": \"66158e18ecef2e2b389e8933\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/message/send",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"message",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Message Like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/message/like/12",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"message",
+								"like",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{tokenU}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/list",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "tokenA",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTUzNzA3M2Q1OTlkZWUzMGExZTExYSIsImlhdCI6MTcxMjY4Nzg0MiwiZXhwIjoxNzIxMzI3ODQyfQ.MdU4iSVNcMv6V_FWsSM9UENT_8H6g12aDiJkiWrv9WE",
+			"type": "string"
+		},
+		{
+			"key": "tokenU",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTUzYjExODA5MWZjOGVjM2QyY2Y3YyIsImlhdCI6MTcxMjY4Nzk1MSwiZXhwIjoxNzIxMzI3OTUxfQ.4WtM0nEBc-qG9elxTA7eBLS7eAiprcYvRJJpWLbcXac",
+			"type": "string"
+		}
+	]
+}

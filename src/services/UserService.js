@@ -32,13 +32,24 @@ export default class UserService {
     if (body.password) {
       const salt = genSaltSync(10);
       const hash = hashSync(body.password, salt);
-      body.password = hash;
+      user.password = hash;
     }
     if (body.phone) {
-      body.phone_verified_at = null;
+      user.phone = body.phone;
+      user.phone_verified_at = null;
     }
     if (body.email) {
-      body.email_verified_at = null;
+      user.email = body.email;
+      user.email_verified_at = null;
+    }
+    if (body.name) {
+      user.name = body.name;
+    }
+    if (body.blocked) {
+      user.blocked = body.blocked;
+    }
+    if (body.type) {
+      user.type = body.type;
     }
     await user.save();
     return {
@@ -49,7 +60,16 @@ export default class UserService {
   }
 
   async list(request) {
-    const users = await User.find({ type: { $eq: 'user' }, _id: { $ne: request.auth_user._id } });
+    const filter = {
+      _id: { $ne: request.auth_user._id },
+    };
+    if (request.auth_user.type === 'user') {
+      filter.type = { $eq: 'user' };
+      filter.blocked =  { $eq: false };
+      filter.email_verified_at =  { $ne: null };
+      filter.phone_verified_at =  { $ne: null };
+    }
+    const users = await User.find(filter);
     if (!users) {
       return {
         status: "fail",

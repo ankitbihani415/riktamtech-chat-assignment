@@ -2,7 +2,7 @@ import { Schema as _Schema, model } from 'mongoose';
 
 const Schema = _Schema;
 const messageSchema = new Schema({
-  name: {
+  message: {
     type: String,
   },
   group_id: {

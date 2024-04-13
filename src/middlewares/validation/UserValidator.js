@@ -23,6 +23,7 @@ const createValidationRules = () => {
 const updateValidationRules = () => {
 	return [
 		check('phone')
+			.optional()
 			.isInt().withMessage('Phone Field should be numeric')
 			.bail()
 			.isLength({ min: 10, max: 10 }).withMessage('Phone should be of 10 digits')
@@ -33,6 +34,7 @@ const updateValidationRules = () => {
 				}
 			}),
 		check('password')
+			.optional()
 			.isLength({ min: 8 }).withMessage('Password length should be greater then 8'),
 	];
 }
