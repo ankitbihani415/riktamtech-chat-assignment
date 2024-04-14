@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  riktamtechchatassignment:
+    image: riktamtechchatassignment
+    build:
+      context: .
+      dockerfile: ./Dockerfile  
+    ports:
+      - 3000:3000
+    networks:
+      - nodeapp-network
+    depends_on: 
+      - mongodb
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    ports:
+      - "27018:27017"
+    # volumes:
+    #   - mongodb_data:/data/db
+    networks:
+      - nodeapp-network
+
+networks:
+  nodeapp-network:
+    driver: bridge

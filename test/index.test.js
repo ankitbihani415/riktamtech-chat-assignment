@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 import { testDB, disconnectDB } from '../src/db';
-import { listSeedUser } from '../seed/user.seeder';
+import { listSeedUser } from '../src/seed/user.seeder';
 import request from 'supertest';
 import { server } from '../src';
 

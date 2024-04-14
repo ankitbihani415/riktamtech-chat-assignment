@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { connect, connection } from 'mongoose';
-import { adminSeed, clearTestDB, userSeed } from '../../seed/user.seeder';
+import { adminSeed, clearTestDB, userSeed } from '../seed/user.seeder';
 
 export async function connectDB() {
   await connect(process.env.MONGODB_URI); //Connecting to the database

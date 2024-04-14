@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { genSaltSync, hashSync } from 'bcrypt';
-import User from '../src/models/user';
-import Group from '../src/models/group';
-import GroupMember from '../src/models/groupMember';
-import Message from '../src/models/message';
+import User from '../models/user';
+import Group from '../models/group';
+import GroupMember from '../models/groupMember';
+import Message from '../models/message';
 
 export async function adminSeed() {
   try {
